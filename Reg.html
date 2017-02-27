@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式判断</title>
+    <style>
+        div{
+            width:220px;
+            height:40px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+    <input type="text" id="text1" placeholder="请输入手机号码">
+    <input type="button" id="button1" value="确定">
+    <div id="out1"></div>
+    <input type="text" id="text2" placeholder="请输入字符串">
+    <input type="button" id="button2" value="确定">
+    <div id="out2"></div>
+    </form>
+    <script>
+        var getE=function(ele){
+            return document.getElementById(ele);
+        }
+        var text1=getE('text1');
+        var text2=getE('text2');
+        function test1(){
+            var phone=/^1[3|4|5|8][0-9]\d{8}$/;
+            if(phone.test(getE('text1').value)){
+                getE('out1').innerHTML="是正确的手机号！"
+            }else{
+                getE('out1').innerHTML="不是正确的手机号！"
+            }
+        }
+        getE('button1').onclick=test1;
+
+        function test2(){
+            var str=/\b([a-zA-Z]+[-]?[a-zA-Z]*)\s+\1\b/;
+            if(str.test(getE('text2').value)){
+                getE('out2').innerHTML="有重复并相邻单词！"
+            }else{
+                getE('out2').innerHTML="无重复单词！"
+            }
+        }
+        getE('button2').onclick=test2;
+    </script>
+</body>
+</html>
